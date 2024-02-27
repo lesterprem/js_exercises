@@ -1,0 +1,20 @@
+:root{
+    background: #000;
+    font-size: 2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: beige;
+}
+
+.booktable{
+    border: solid white 2px;
+}
+
+.btn{
+    padding: 8px;
+    margin: 4px;
+    margin-bottom: 16px;
+}
+
+.booktable{
+    padding: 8px;
+}

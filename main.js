@@ -1,60 +1,51 @@
-let myLibrary = [   
-    {title:"LOTR",author:"JRR Tolkien",pages:749,read:"yes"},
-    {title:"Air",author:"Nike Owner",pages:450,read:"yes"},
-    {title:"1984",author:"George Orwell",pages:550,read:"no"},
-    {title:"Hitchiker's Guide to Galaxy",author:"Douglas Adams",pages:250,read:"yes"}
-];
-const bookTable=document.querySelector("table");
-myLibrary.forEach(item => {
-    const tHead=bookTable.createTHead();
-    
-}
-);
-/*
-function Book(title, author, pages, read){
-    this.title= title,
-    this.author= author;
-    this.pages= pages;
-    this.read= read;
-    this.info= function() {
-        return(`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`);
-    };
+const myLibrary=[];
+
+function Book(title, author, pages){
+    this.title=title;
+    this.author=author;
+    this.pages=pages;
 };
 
-addToLibrary();
+myLibrary.push(new Book("JK Rowling","Harry Potter", "800"));
+myLibrary.push(new Book("Phil Knight","Shoe Dog", "600"));
+myLibrary.push(new Book("Marcus Aurelius","Meditations", "200"));
+// addToLibrary();
 function addToLibrary(){
-    const title=prompt("Enter book title");
-    const author=prompt("Who authored this book?");
+    const title=prompt("What's the book's title?");
+    const author=prompt("Who wrote this book?");
     const pages=prompt("How long is the book?");
-    const read=prompt("Have you read it yet?");
-    // myLibrary.push(new Book(title, author, pages, read));
-
-}
-
-//book1= new Book('The Hobbit','JRR Tolkien','794','is not read');
-*/
-// console.table(myLibrary);
+    myLibrary.push(new Book(title,author,pages));
+    printTable(myLibrary);
+};
 
 
+function printTable(myLibrary){
+const table=document.querySelector(".booktable");
+const thTitle=document.createElement('th');
+thTitle.textContent="Title";
+const thAuthor=document.createElement('th');
+thAuthor.textContent="Author";
+const thPages=document.createElement('th');
+thPages.textContent="Pages";
 
+table.appendChild(thTitle);
+table.appendChild(thAuthor);
+table.appendChild(thPages);
 
-/// ----
+myLibrary.forEach(item => {
+    const trow=document.createElement('tr');
+    const tdTitle=document.createElement('td');
+    const tdAutho=document.createElement('td');
+    const tdPages=document.createElement('td');
+    tdTitle.textContent= item.title;
+    tdAutho.textContent=item.author;
+    tdPages.textContent=item.pages;
+    table.appendChild(trow);
+    table.appendChild(tdTitle);
+    table.appendChild(tdAutho);
+    table.appendChild(tdPages);
+})
+};
 
-function Book(title,author, pages, read){
-    this.name=name,
-    this.author,
-    this.pages,
-    this.read,
-}
-
-addToLibrary();
-
-function addToLibrary(){
-    const title = prompt("Enter book title");
-    const author = prompt("Who wrote the book?");
-    const pages= prompt("How many pages long is the book?");
-    const read = prompt(" have you read teh book?");
-    myLibrary.push(new Book(title, author, pages, read));
-}
-
-console.table(myLibrary);
+const newbook=document.querySelector('.btn');
+newbook.addEventListener("click",addToLibrary);
