@@ -33,5 +33,28 @@ function addToLibrary(){
 
 //book1= new Book('The Hobbit','JRR Tolkien','794','is not read');
 */
-console.table(myLibrary);
+// console.table(myLibrary);
 
+
+
+
+/// ----
+
+function Book(title,author, pages, read){
+    this.name=name,
+    this.author,
+    this.pages,
+    this.read,
+}
+
+addToLibrary();
+
+function addToLibrary(){
+    const title = prompt("Enter book title");
+    const author = prompt("Who wrote the book?");
+    const pages= prompt("How many pages long is the book?");
+    const read = prompt(" have you read teh book?");
+    myLibrary.push(new Book(title, author, pages, read));
+}
+
+console.table(myLibrary);
