@@ -6,22 +6,15 @@ function Book(title, author, pages){
     this.pages=pages;
 };
 
-myLibrary.push(new Book("JK Rowling","Harry Potter", "800"));
-myLibrary.push(new Book("Phil Knight","Shoe Dog", "600"));
-myLibrary.push(new Book("Marcus Aurelius","Meditations", "200"));
-// addToLibrary();
-function addToLibrary(){
-    const title=prompt("What's the book's title?");
-    const author=prompt("Who wrote this book?");
-    const pages=prompt("How long is the book?");
-    myLibrary.push(new Book(title,author,pages));
-    printTable(myLibrary);
+function addToLibrary() {
+    const title = prompt("What's the book's title?");
+    const author = prompt("Who wrote this book?");
+    const pages = prompt("How long is the book?");
+    return new Book(title, author, pages);
 };
 
-
-function printTable(myLibrary){
 const table=document.querySelector(".booktable");
-const thTitle=document.createElement('th');
+const thTitle=document.createElement('th'); 
 thTitle.textContent="Title";
 const thAuthor=document.createElement('th');
 thAuthor.textContent="Author";
@@ -32,20 +25,26 @@ table.appendChild(thTitle);
 table.appendChild(thAuthor);
 table.appendChild(thPages);
 
-myLibrary.forEach(item => {
-    const trow=document.createElement('tr');
-    const tdTitle=document.createElement('td');
-    const tdAutho=document.createElement('td');
-    const tdPages=document.createElement('td');
-    tdTitle.textContent= item.title;
-    tdAutho.textContent=item.author;
-    tdPages.textContent=item.pages;
+// Function to add a new table row for a book
+function addTableRow(book) {
+    const table = document.querySelector(".booktable");
+    const trow = document.createElement('tr');
+    const tdTitle = document.createElement('td');
+    const tdAutho = document.createElement('td');
+    const tdPages = document.createElement('td');
+    tdTitle.textContent = book.title;
+    tdAutho.textContent = book.author;
+    tdPages.textContent = book.pages;
+    trow.appendChild(tdTitle);
+    trow.appendChild(tdAutho);
+    trow.appendChild(tdPages);
     table.appendChild(trow);
-    table.appendChild(tdTitle);
-    table.appendChild(tdAutho);
-    table.appendChild(tdPages);
-})
-};
+}
 
-const newbook=document.querySelector('.btn');
-newbook.addEventListener("click",addToLibrary);
+const btn = document.querySelector('.btn');
+btn.addEventListener("click", () => {
+    const newbook= addToLibrary();
+    myLibrary.push(newbook);
+    console.log(newbook);
+    addTableRow(newbook);
+});
