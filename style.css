@@ -10,11 +10,32 @@
 }
 
 .btn{
-    padding: 8px;
+    padding: 16px;
     margin: 4px;
     margin-bottom: 16px;
+    font-size: 4 em;
 }
 
 .booktable{
-    padding: 8px;
+    padding: 16px; 
+    width: 80%;
+
+}
+
+th{
+    background: lightgray;
+    color: #000;
+}
+
+tr {
+    padding: 24px;
+    margin: 8px;
+}
+
+button{
+    
+}
+
+.actioncolumn{
+    justify-content: center;
 }
